@@ -1,0 +1,43 @@
+image: node:14-alpine
+cache:
+  paths:
+  - node_modules/
+stages:
+- build
+- deploy-test
+- deploy-prod
+
+build-job:
+  stage: build
+  script:
+  - echo "Compiling the code..."
+  - npm install
+  - npm run build
+  - echo "Compile complete."
+
+deploy-dev-infra:
+  stage: deploy-test
+  variables:
+    CDK_DEPLOY_ACCOUNT: $DEV_ACCOUNT_ID
+    CDK_DEPLOY_REGION: $AWS_DEFAULT_REGION
+  before_script:
+  - npm install -g aws-cdk
+  script:
+  - npx cdk synth
+  - cdk diff
+  - cdk deploy --require-approval never
+
+deploy-prod-infra:
+  stage: deploy-prod
+  variables:
+    CDK_DEPLOY_ACCOUNT: $PROD_ACCOUNT_ID
+    CDK_DEPLOY_REGION: $AWS_DEFAULT_REGION
+  before_script:
+  - npm install -g aws-cdk
+  script:
+  - npx cdk synth
+  - cdk diff
+  - cdk deploy --require-approval never
+  rules:
+  - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    when: manual
