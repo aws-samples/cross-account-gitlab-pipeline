@@ -1,0 +1,148 @@
+{
+  "version": "31.0.0",
+  "artifacts": {
+    "CrossAccountGitlabStack.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "CrossAccountGitlabStack.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "CrossAccountGitlabStack": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://015273237124/us-east-1",
+      "properties": {
+        "templateFile": "CrossAccountGitlabStack.template.json",
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::015273237124:role/cdk-hnb659fds-deploy-role-015273237124-us-east-1",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::015273237124:role/cdk-hnb659fds-cfn-exec-role-015273237124-us-east-1",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-015273237124-us-east-1/c7a8f760a352c8059de812d2f490b13fa5873897ab423d0630c51ac64ea34217.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "CrossAccountGitlabStack.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::015273237124:role/cdk-hnb659fds-lookup-role-015273237124-us-east-1",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "CrossAccountGitlabStack.assets"
+      ],
+      "metadata": {
+        "/CrossAccountGitlabStack/sample-s3-bucket/Key/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "samples3bucketKey65A514BC"
+          }
+        ],
+        "/CrossAccountGitlabStack/sample-s3-bucket/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "samples3bucket2BC43E6B"
+          }
+        ],
+        "/CrossAccountGitlabStack/sample-s3-bucket/Policy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "samples3bucketPolicy21EF4BE4"
+          }
+        ],
+        "/CrossAccountGitlabStack/Handler/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HandlerServiceRoleFCDC14AE"
+          }
+        ],
+        "/CrossAccountGitlabStack/Handler/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Handler886CB40B"
+          }
+        ],
+        "/CrossAccountGitlabStack/widgets-api/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "widgetsapi0BCA0B12"
+          }
+        ],
+        "/CrossAccountGitlabStack/widgets-api/CloudWatchRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "widgetsapiCloudWatchRole13420B98"
+          }
+        ],
+        "/CrossAccountGitlabStack/widgets-api/Account": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "widgetsapiAccount54650C10"
+          }
+        ],
+        "/CrossAccountGitlabStack/widgets-api/Deployment/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "widgetsapiDeployment9DE33693792ec1651d56de323fd58dae9a808f53"
+          }
+        ],
+        "/CrossAccountGitlabStack/widgets-api/DeploymentStage.prod/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "widgetsapiDeploymentStageprod19E45538"
+          }
+        ],
+        "/CrossAccountGitlabStack/widgets-api/Endpoint": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "widgetsapiEndpoint2B78C075"
+          }
+        ],
+        "/CrossAccountGitlabStack/widgets-api/Default/GET/ApiPermission.CrossAccountGitlabStackwidgetsapi9DCB6907.GET..": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "widgetsapiGETApiPermissionCrossAccountGitlabStackwidgetsapi9DCB6907GET8C35329B"
+          }
+        ],
+        "/CrossAccountGitlabStack/widgets-api/Default/GET/ApiPermission.Test.CrossAccountGitlabStackwidgetsapi9DCB6907.GET..": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "widgetsapiGETApiPermissionTestCrossAccountGitlabStackwidgetsapi9DCB6907GET2DEC68CA"
+          }
+        ],
+        "/CrossAccountGitlabStack/widgets-api/Default/GET/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "widgetsapiGETFE8E3A17"
+          }
+        ],
+        "/CrossAccountGitlabStack/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/CrossAccountGitlabStack/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/CrossAccountGitlabStack/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "CrossAccountGitlabStack"
+    },
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    }
+  }
+}
