@@ -17,6 +17,7 @@ export class CrossAccountGitlabStack extends cdk.Stack {
     });
 
     // Serverless App Start
+    /*
     const handler = new lambda.Function(this, 'Handler', {
       code: new lambda.AssetCode('lambda'),
       handler: 'index.handler',
@@ -33,7 +34,7 @@ export class CrossAccountGitlabStack extends cdk.Stack {
     });
 
     api.root.addMethod("GET", getSampleLambdaIntegration);
-
+    */
     // Serverless App End
   }
 }
