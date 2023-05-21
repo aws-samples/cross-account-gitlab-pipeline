@@ -1,9 +1,14 @@
 {
-  "name": "cross-account-gitlab",
+  "name": "cross-account-gitlab-pipeline",
   "version": "0.1.0",
   "bin": {
     "cross-account-gitlab": "bin/cross-account-gitlab.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aws-samples/cross-account-gitlab-pipeline"
+  },
+  "license": "MIT-0",
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
