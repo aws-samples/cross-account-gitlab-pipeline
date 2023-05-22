@@ -21,6 +21,8 @@ deploy-dev-infra:
     CDK_DEPLOY_ACCOUNT: $DEV_ACCOUNT_ID
     CDK_DEPLOY_REGION: $AWS_DEFAULT_REGION
   before_script:
+    - echo $CDK_DEPLOY_ACCOUNT
+    - echo $CDK_DEPLOY_REGION
     - npm install -g aws-cdk
   script:
     - npx cdk synth
