@@ -7,6 +7,6 @@ test('S3 Bucket Created', () => {
   const stack = new CrossAccountGitlab.CrossAccountGitlabStack(app, 'MyTestStack');
   const template = Template.fromStack(stack);
   template.hasResourceProperties('AWS::S3::Bucket', {
-    enforceSSL: true
+    DeletionPolicy: 'Retain'
   });
 });
