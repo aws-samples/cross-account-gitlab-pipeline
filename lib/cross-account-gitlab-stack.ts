@@ -10,14 +10,8 @@ export class CrossAccountGitlabStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
-    const sampleS3Bucket = new s3.Bucket(this, `sample-s3-bucket`, {
-      enforceSSL: true,
-      blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL,
-      encryption: s3.BucketEncryption.KMS
-    });
-
     // Serverless App Start
-    /*
+    
     const handler = new lambda.Function(this, 'Handler', {
       code: new lambda.AssetCode('lambda'),
       handler: 'index.handler',
@@ -34,7 +28,7 @@ export class CrossAccountGitlabStack extends cdk.Stack {
     });
 
     api.root.addMethod("GET", getSampleLambdaIntegration);
-    */
+    
     // Serverless App End
   }
 }
