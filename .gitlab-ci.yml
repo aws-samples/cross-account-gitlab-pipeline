@@ -1,19 +1,19 @@
-image: node:16-alpine
+image: node:18-alpine
 cache:
   paths:
-    - node_modules/
+  - node_modules/
 stages:
-  - build
-  - deploy-test
-  - deploy-prod
+- build
+- deploy-test
+- deploy-prod
 
 build-job:
   stage: build
   script:
-    - echo "Compiling the code..."
-    - npm install
-    - npm run build
-    - echo "Compile complete."
+  - echo "Compiling the code..."
+  - npm install
+  - npm run build
+  - echo "Compile complete."
 
 deploy-dev-infra:
   stage: deploy-test
@@ -21,13 +21,12 @@ deploy-dev-infra:
     CDK_DEPLOY_ACCOUNT: $DEV_ACCOUNT_ID
     CDK_DEPLOY_REGION: $AWS_DEFAULT_REGION
   before_script:
-    - echo $CDK_DEPLOY_ACCOUNT
-    - echo $CDK_DEPLOY_REGION
-    - npm install -g aws-cdk
+  - npm install -g aws-cdk@latest
+  - cdk --version
   script:
-    - npx cdk synth
-    - cdk diff
-    - cdk deploy --require-approval never
+  - npx cdk synth
+  - cdk diff
+  - cdk deploy --require-approval never
 
 deploy-prod-infra:
   stage: deploy-prod
@@ -35,11 +34,12 @@ deploy-prod-infra:
     CDK_DEPLOY_ACCOUNT: $PROD_ACCOUNT_ID
     CDK_DEPLOY_REGION: $AWS_DEFAULT_REGION
   before_script:
-    - npm install -g aws-cdk
+  - npm install -g aws-cdk@latest
+  - cdk --version
   script:
-    - npx cdk synth
-    - cdk diff
-    - cdk deploy --require-approval never
+  - npx cdk synth
+  - cdk diff
+  - cdk deploy --require-approval never
   rules:
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-      when: manual
+  - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    when: manual
