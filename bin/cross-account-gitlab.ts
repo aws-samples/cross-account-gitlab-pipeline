@@ -2,6 +2,10 @@
 import 'source-map-support/register';
 import * as cdk from 'aws-cdk-lib';
 import { CrossAccountGitlabStack } from '../lib/cross-account-gitlab-stack';
+import { NagSuppressions } from 'cdk-nag';
+import { AwsSolutionsChecks } from 'cdk-nag';
+import { Aspects } from 'aws-cdk-lib';
+import { App } from 'aws-cdk-lib';
 
 const app = new cdk.App();
 new CrossAccountGitlabStack(app, 'CrossAccountGitlabStack', {
@@ -19,3 +23,5 @@ new CrossAccountGitlabStack(app, 'CrossAccountGitlabStack', {
 
   /* For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html */
 });
+
+Aspects.of(app).add(new AwsSolutionsChecks());
