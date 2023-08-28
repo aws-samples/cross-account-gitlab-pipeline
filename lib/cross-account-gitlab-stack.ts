@@ -36,6 +36,10 @@ export class CrossAccountGitlabStack extends cdk.Stack {
     lambdaRole.attachInlinePolicy(new iam.Policy(this, 'lambda-policy', {
       statements: [new iam.PolicyStatement({
         actions: ['s3:GetObject'],
+        resources: [sample_bucket.bucketArn+"/someprefix"],
+      }),
+      new iam.PolicyStatement({
+        actions: ['s3:ListBucket'],
         resources: [sample_bucket.bucketArn],
       })],
     }));
